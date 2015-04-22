@@ -17,7 +17,8 @@
         {"name": "svn", "dir": ".svn", "cmd": "svn"},
         {"name": "bzr", "dir": ".bzr", "cmd": "bzr"},
         {"name": "hg",  "dir": ".hg",  "cmd": "hg"},
-        {"name": "tf",  "dir": "$tf",  "cmd": "C:/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE/TF.exe"}
+        {"name": "tf",  "dir": "$tf",  "cmd": "C:/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE/TF.exe"},
+        {"name": "p4",  "dir": "p4config.txt", "cmd": "p4"},
     ],
 
     // default list of options for a diff command for a certain VCS

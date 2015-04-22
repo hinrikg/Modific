@@ -29,7 +29,8 @@ def get_vcs_settings():
         {"name": "svn", "dir": ".svn", "cmd": "svn"},
         {"name": "bzr", "dir": ".bzr", "cmd": "bzr"},
         {"name": "hg",  "dir": ".hg",  "cmd": "hg"},
-        {"name": "tf",  "dir": "$tf",  "cmd": "C:/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE/TF.exe"}
+        {"name": "tf",  "dir": "$tf",  "cmd": "C:/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE/TF.exe"},
+        {"name": "p4",  "dir": "p4config.txt", "cmd": "p4"},
     ]
     settings = get_settings().get('vcs', default)
 
@@ -359,6 +360,10 @@ class DiffCommand(VcsCommand):
     def tf_diff_command(self, file_name):
         vcs_options = self.settings.get('vcs_options', {}).get('tf') or ['-format:unified']
         return [get_user_command('tf') or 'tf', 'diff'] + vcs_options + [file_name]
+
+    def p4_diff_command(self, file_name):
+        vcs_options = self.settings.get('vcs_options', {}).get('p4') or ['-du']
+        return [get_user_command('p4') or 'p4', 'diff'] + vcs_options + [file_name + "#have"]
 
     def join_lines(self, lines):
         """
